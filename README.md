@@ -35,7 +35,7 @@ Only accepts bodys following the format: {artist:"Artista", title:"Título", alb
 Saves the song on the song list's database
 
 PUT "/songs/:id" :
-Only accepts bodys following the format: {artist:"Artista", title:"Título", album:"Álbum"}
+Only accepts bodys following the format: {artist:"Artista", title:"Título", album:"Álbum"}.
 Updates the information for the song with the id passed as the route parameter
 
 DELETE "/songs" :
