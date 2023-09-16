@@ -28,4 +28,8 @@ async function getById(id:number): Promise<number> {
   return query.rowCount
 }
 
-export const songsRepository = { select , insert , update , getById};
+async function del(): Promise<void> {
+  const deleted =  await db.query<Song>(`DELETE FROM songs WHERE id>0;`)
+}
+
+export const songsRepository = { select , insert , update , getById, del};

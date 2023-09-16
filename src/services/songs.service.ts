@@ -28,4 +28,8 @@ async function checkSong(id:number): Promise<boolean> {
   return true
 }
 
-export const songsService = { read , create , update};
+async function del(): Promise<void> {
+  await songsRepository.del()
+}
+
+export const songsService = { read , create , update, del};
