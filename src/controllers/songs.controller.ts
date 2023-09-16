@@ -14,4 +14,11 @@ async function create(req: Request, res: Response):Promise<void> {
   res.status(httpStatus.CREATED).send(`Nova música criada com sucesso`) 
 }
 
-export const songsController = { read , create};
+async function update(req: Request, res: Response): Promise<void> {
+  const id = Number(req.params.id);
+  const song = req.body as createSong;
+  await songsService.update(id, song)
+  res.status(httpStatus.OK).send(`Song with id: ${id} successfully updated`)
+}
+
+export const songsController = { read , create , update};

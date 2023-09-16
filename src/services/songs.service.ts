@@ -1,4 +1,4 @@
-import { Song } from "@/protocols";
+import { Song, createSong } from "@/protocols";
 import { songsRepository } from "@/repository";
 
 async function read(): Promise<Song[] | string> {
@@ -16,4 +16,16 @@ async function create(title: string, artist: string, album: string): Promise<voi
   await songsRepository.insert(title,artist,album)
 }
 
-export const songsService = { read , create};
+async function update(id:number, song: createSong): Promise<void> {
+  const songExists = await checkSong(id)
+  if(!songExists) throw {message:`Song not found`}
+  await songsRepository.update(id, song)
+}
+
+async function checkSong(id:number): Promise<boolean> {
+  const queryRowCount = await songsRepository.getById(id)
+  if(queryRowCount === 0) return false
+  return true
+}
+
+export const songsService = { read , create , update};
