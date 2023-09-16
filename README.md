@@ -1,25 +1,48 @@
-Está é uma pequena aplicação seguindo o padrão das APIs REST onde o usuário pode salvar suas músicas mais escutadas no momento,
-e ao enjoar delas rapidamente pode ser feita a renovação da lista removendo todas as músicas.
+This is a simple REST API where you can save your favorites songs of the moment, and once you get sick of the you can just wipe
+all data and start a new list.
 
-Para iniciar a aplicação primeiramente certifique-se de instalar as dependendências através do comando "npm i" no terminal,
-tendo isto feito, utilize os script "npm run dev" para rodar a aplicação localmente e o script "npm run build" para tranpilar o código para .js se desejar. 
+To start the API locally first make sure to install all the dependencies running the "npm i" command on terminal,
+now with all dependencies properly installed run the script "npm run dev" to run the API you can also run "npm run build" to transpile
+the code to .js on a new /dist folder if you desire.
 
-ROTAS:
+Routes:
 
 GET "/songs" : 
-Apenas retorna todas as músicas salvas.
+Just returns an array with all the songs in the list following the format:
+[
+  {
+    "id": 4,
+    "title": "Creepin'",
+    "artist": "Metro Boomin",
+    "album": "HEROES & VILLAINS"
+  },
+  {
+    "id": 5,
+    "title": "Love Again",
+    "artist": "Alok",
+    "album": "Love Again"
+  },
+  {
+    "id": 6,
+    "title": "Fair Trade",
+    "artist": "Drake",
+    "album": "Certified Lover Boy"
+  }
+]
 
 POST "/songs" : 
-Aceita apenas bodys no formato: {artist:"Artista", title:"Título", album:"Álbum"}.
-Salva as informações da música no banco de dados
+Only accepts bodys following the format: {artist:"Artista", title:"Título", album:"Álbum"}.
+Saves the song on the song list's database
 
 PUT "/songs/:id" :
-Aceita apenas bodys no mesmo formato: {artist:"Artista", title:"Título", album:"Álbum"}
-Atualiza as informações da música com o id passado nos parâmetros da rota.
+Only accepts bodys following the format: {artist:"Artista", title:"Título", album:"Álbum"}
+Updates the information for the song with the id passed as the route parameter
 
 DELETE "/songs" :
-Limpa completamente as informações no banco de dados, reiniciando a lista.
+Completely wipes all data from database, restarting the song list.
 
-Autor:Breno Curvello dos Santos Breves
+Deployed at: https://poc-ts-t3je.onrender.com
+
+Author:Breno Curvello dos Santos Breves
 
 `Git: https://github.com/brenobreves`
